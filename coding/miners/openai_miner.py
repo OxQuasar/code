@@ -5,7 +5,7 @@ import bittensor as bt
 from starlette.types import Send
 from functools import partial
 from typing import Dict, Awaitable
-from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv, find_dotenv
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -21,12 +21,12 @@ def miner_init(self):
     _ = load_dotenv(find_dotenv())
     api_key = os.environ.get("OPENAI_API_KEY", "EMPTY")
     # Set openai key and other args
-    self.model = OpenAI(
-        api_key="",
+    self.model = ChatOpenAI(
+        #model_name=self.config.neuron.model_id,
         base_url="http://127.0.0.1:5000/v1",
-        model_name=self.config.neuron.model_id,
-        max_tokens=2048,
         temperature=0.7,
+        max_tokens=2048,
+        api_key="",
     )
 
 def miner_process(self, synapse: StreamCodeSynapse) -> Awaitable:
