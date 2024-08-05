@@ -22,7 +22,7 @@ def miner_init(self):
     api_key = os.environ.get("OPENAI_API_KEY", "EMPTY")
     # Set openai key and other args
     self.model = OpenAI(
-        api_key=api_key,
+        #api_key=api_key,
         base_url="127.0.0.1:5000/v1",
         model_name=self.config.neuron.model_id,
         max_tokens=2048,
