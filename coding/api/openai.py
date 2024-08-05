@@ -113,10 +113,8 @@ async def collect_async_gen(gen):
     return [item async for item in gen]
 
 
-@app.post(
-    "/chat/completions"
-)
-@app.post("/v1/chat/completions")
+@app.post("/completions")
+@app.post("/v1/completions")
 async def completions(request: CompletionRequest):
     if isinstance(request.prompt, list):
         request.prompt = " ".join(request.prompt)

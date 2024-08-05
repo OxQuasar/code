@@ -23,6 +23,7 @@ def miner_init(self):
     # Set openai key and other args
     self.model = OpenAI(
         api_key=api_key,
+        api_base="127.0.0.1:5000/v1",
         model_name=self.config.neuron.model_id,
         max_tokens=2048,
         temperature=0.7,
